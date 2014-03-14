@@ -1,0 +1,49 @@
+div(class="col-md-12 column")
+	div(class="col-md-2 column")
+	div(class="col-md-3 column")
+		div(class="panel panel-default")
+			div(class="panel-heading")
+				h2(class="panel-title") Alarm
+			div(class="panel-body")
+				table(class="table")
+					tr
+						td Host
+						td 10.1.15.80
+					tr
+						td Alarm Code
+						td linkdown
+					tr
+						td Classification
+						td connectivity
+					tr
+						td Protocol
+						td Syslog
+		div(class="spacer-25px")
+		div(class="panel panel-default")
+			div(class="panel-heading")
+				h2(class="panel-title") Definitions
+			div(class="panel-body")
+				table(class="table")
+					tr
+						th Alarm Code
+						th(colspan=2) Classification
+					tr
+						td linkdown
+						td connectivity
+						td(style="width:25px;")
+							button(class="fa fa-arrow-right", ng-click="pushVals(0)")
+					tr
+						td SNMP
+						td connectivity
+						td(style="width:25px;")
+							button(class="fa fa-arrow-right", ng-click="pushVals(1)")
+					tr
+						td ICMP
+						td connectivity
+						td(style="width:25px;")
+							button(class="fa fa-arrow-right", ng-click="pushVals(2)")
+	div(class="col-md-5 column")
+		textarea(style="width:100%;height:458px;", ng-model="testVals")
+		div(class="row clearfix")
+			button(class="btn btn-large btn-success pull-right", style="margin-right:15px;") Submit
+			button(class="btn btn-large btn-default pull-right", style="margin-right:10px;") Cancel

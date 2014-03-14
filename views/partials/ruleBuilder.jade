@@ -1,0 +1,62 @@
+div(class="col-md-12 column")
+button(ng-click="toggleSlider()", class="btn btn-default")
+	|Show Existing Rules
+div(class="slider", ng-show="slider", (style="max-width:27%; margin-left:0px; position:absolute;z-index:2;background:#fff;"))
+	table(class="table")
+		thead
+			th Name
+			th Protocol
+			th Classification
+		tbody
+			tr(ng-repeat="rules in rulesList")
+				td{{rules.protocol}}
+				td{{rules.alarmcode_name}}
+				td{{rules.classification}}
+div(class="spacer-25px")
+div(col-md-12 column)
+	form(class="jumbotron", style="margin-left:10px; margin-right: 10px")
+		table(class="table ruleBuildTable")
+				tbody
+					tr
+						td(style="width:200px", style="text-transform:Capitalize;text-align:left;border-top:0;")
+							h3(style="padding:0;margin:0;") Alarm Code
+						td(style="width:400px;border-top:0;text-align:right;")
+							input(wc-unique="{key:'alarm_code'}", type="textbox", ng-model="textBox", style="width:90%;", ng-model="rule['alarmcode_name']")
+					tr
+						td(style="width:200px", style="text-transform:Capitalize")
+							|Protocol
+						td(style="width:400px;text-align:right;")
+							input(type="text", ng-model="rule['protocol']", style="width:90%;", value="syslog")
+					tr
+						td(style="width:200px", style="text-transform:Capitalize")
+							|Classification
+						td(style="width:400px;text-align:right;")
+							input(type="textbox",ng-model="rule['classification']", style="width:90%;")
+					tr
+						td(style="width:200px", style="text-transform:Capitalize")
+							|Pattern Expression
+						td(style="width:400px;text-align:right;")
+							textarea(ng-model="rule['pattern_matcher']", style="width:90%;height:133px;")
+					tr
+						td(colspan=2, style="text-align:right;background:fefefe;border-top:0;")
+							{{message}}
+					tr
+						td(style="width:200px", style="text-transform:Capitalize")
+							|Root Cause
+						td(style="width:400px;text-align:right;")
+							textarea(ng-model="rule['root_cause']", style="width:90%;height:70px;")
+					tr
+						td(style="width:200px", style="text-transform:Capitalize")
+							|Remediation
+						td(style="width:400px;text-align:right;")
+							textarea(type="textbox", ng-model="rule['remediation']", style="width:90%;height:133px;")
+					tr
+						td(colspan=2, style="text-align:center;")
+							input(type="button", value="submit", style="width:100%;", class="btn btn-primary btn-large", ng-click="submit()")
+script(type="text/ng-template", id="modalContent.html")
+	div(class="modal-header")
+		h3 System Message
+	div(class="modal-body", style="text-align:center")
+		h3 Alarm code submitted!
+	div(class="modal-footer")
+		button(class="btn btn-primary", ng-click="ok()") OK							

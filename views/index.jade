@@ -1,0 +1,28 @@
+extends layout
+
+block body
+  div(ng-controller='AppCtrl')
+    div(class="well")
+      ul(class="nav nav-pills")
+        li
+          a(href='watch', class="btn btn-inverse btn-large", ng-class="{active: activeNav=='watch'}", ng-click="activeNav='watch'") Watch Stream
+        li
+          a(href='build', class="btn btn-inverse btn-large", ng-class="{active: activeNav=='build'}", ng-click="activeNav='build'") Build Condition
+        li
+          a(href='construct', class="btn btn-inverse btn-large", ng-class="{active: activeNav=='construct'}", ng-click="activeNav='construct'") Construct Correlation
+    div(ng-view)
+
+  script(src='bower_components/jquery/jquery.min.js')
+  script(src='/socket.io/socket.io.js')
+  script(src='bower_components/angular/angular.js')
+  script(src='bower_components/angular-route/angular-route.js')
+  script(src='bower_components/angular-socket-io/socket.js')
+  script(src='bower_components/angular-moment/angular-momentjs.js')
+  script(src='bower_components/angular-ng-grid/angular-ng-grid.min.js')
+  script(src='bower_components/angular-bootstrap/ui-bootstrap.min.js')
+  script(src='bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js')
+  script(src='js/app.js')
+  script(src='js/services.js')
+  script(src='js/controllers.js')
+  script(src='js/filters.js')
+  script(src='js/directives.js')

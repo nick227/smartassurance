@@ -1,0 +1,45 @@
+div(class="panel panel-default", style="min-height:220px")
+	div(class="panel-heading")
+		h2(class="panel-title") Realtime Incidents
+	div(class="panel-body")
+		div(class="ngTable", ng-grid="incidentGridOptions")
+div(class="spacer-25px")
+div(class="panel panel-default", style="min-height:220px;")
+	div(class="panel-heading")
+		h2(class="panel-title") Realtime Alarms
+	div(class="panel-body")
+		div(ng-repeat="alarm in alarmList", class="rawAlarm_row")
+			a(href="/build/{{alarm.id}}")
+				div(ng-repeat="(key, val) in alarm.fields",style="display:inline;float:left;", ng-hide="key=='tags'")
+					span(style="text-transform:capitalize; padding:15px;")
+						{{key | cleanField}}: 
+						b {{val}}
+div(class="mockTerminal")						
+	textarea(ng-focus="textArea='active'", ng-blur="textArea='inactive'")
+	div(class="blinky", ng-hide="textArea=='active'")				
+script(type="text/ng-template", id="modalContent.html")
+	div(class="modal-header")
+		h3 Alarms for {{selectedIncident}}
+	div(class="modal-body")
+		table(class="table table-bordered")
+			tr
+				th Type
+				th Severity
+				th Host
+				th Code 
+				th Message
+			tr(ng-repeat="alarm in incidentAlarms")
+				td
+					{{alarm.type}}
+				td
+					{{alarm.severity_label}}
+				td
+					{{alarm.host}}
+				td
+					{{alarm.alarm_code}}
+				td
+					{{alarm.message}}
+	div(class="modal-footer")
+		button(class="btn btn-primary", ng-click="ok()") OK
+
+
